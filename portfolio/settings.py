@@ -36,6 +36,10 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 # Include localhost and 127.0.0.1 by default for local development
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://www.ashwith.cloud-ip.cc",
+]
+
 
 # Application definition
 
