@@ -54,7 +54,7 @@ portfolio/
 │       └── contact.html
 └── requirements.txt
 ```
-##⚙️ Run Locally
+## ⚙️ Run Locally
 ```bash
 git clone https://github.com/AshwithD/portfolio.git
 cd portfolio
@@ -69,7 +69,7 @@ python manage.py runserver
 Open in browser:
 👉 http://127.0.0.1:8000
 
-##🔐 Environment Variables (Production)
+## 🔐 Environment Variables (Production)
 ```bash
 DJANGO_SECRET_KEY=your-secret-key
 DJANGO_DEBUG=False
@@ -83,7 +83,7 @@ DJANGO_ALLOWED_HOSTS=.onrender.com,www.ashwith.cloud-ip.cc,ashwith.cloud-ip.cc
 
 🐙 GitHub: https://github.com/AshwithD
 
-⭐ Feedback
+## ⭐ Feedback
 
 If you have suggestions or spot issues, feel free to open an issue or reach out.
 Thanks for checking out my portfolio! 😊
