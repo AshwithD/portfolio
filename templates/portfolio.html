@@ -1,0 +1,26 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Portfolio - Personal Portfolio{% endblock %}
+
+{% block content %}
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <p>Here are a few projects I've worked on recently:</p><br>
+    <div class="tabs">
+      <div>
+        <i class='bx bx-code-block'></i><h3> Personal Portfolio Website</h3>  
+        <p>A responsive website built using HTML, CSS, and JavaScript to showcase skills and projects.</p><br>
+      </div>
+      <div>
+        <i class='bx bx-heart-circle'></i><h3>Portable ECG Monitoring System</h3>  
+        <p>A health monitoring system using ATmega328p microcontroller to display real-time ECG data on OLED display.</p><br>
+      </div>
+      <div>
+        <i class='bx bxs-battery-charging'></i><h3>Advanced Control Strategy for Bidirectional Quasi Z-Source Inverter </h3> 
+        <p>Implemented a model predictive control approach for energy-efficient operation in low-power EV systems.</p><br>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - Personal Portfolio{% endblock %}
+
+{% block content %}
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Hi, I'm Ashwith D</h1>
+      <h2>ECE Graduate</h2>
+      <p>Always curious, always learning — exploring the intersection of tech and creativity.</p>
+      <div class="buttons">
+        <a href="https://ashwithd.my.canva.site/" id="hireBtn">Hire Me</a>
+        <a href="mailto:ashwithd40@gmail.com" id="talkBtn">Let's Talk</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ashwith-d-495724204"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://github.com/AshwithD"><i class="bx bxl-github"></i></a>
+        <a href="https://www.instagram.com/ashwith__gowda?igsh=MWFlYzh4ZHpnemJrcQ== "><i class="bx bxl-instagram"></i></a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="{% static 'images/Ashwith.jpg' %}" alt="Ashwith" />
+    </div>
+  </section>
+{% endblock %}

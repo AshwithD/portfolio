@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Personal Portfolio{% endblock %}
+
+{% block content %}
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <p class="contact-intro">Feel free to reach out to me. I'm always open to discussion about new projects, opportunities, or ideas.</p>
+    
+    <div class="contact-container">
+      <form method="post" class="contact-form">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.as_p }}
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+{% endblock %}
+
