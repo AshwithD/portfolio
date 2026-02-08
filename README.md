@@ -53,8 +53,8 @@ portfolio/
 │       ├── portfolio.html
 │       └── contact.html
 └── requirements.txt
-
-⚙️ Run Locally
+```
+##⚙️ Run Locally
 ```bash
 git clone https://github.com/AshwithD/portfolio.git
 cd portfolio
@@ -64,17 +64,17 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
-
+```
 
 Open in browser:
 👉 http://127.0.0.1:8000
 
-🔐 Environment Variables (Production)
+##🔐 Environment Variables (Production)
 ```bash
 DJANGO_SECRET_KEY=your-secret-key
 DJANGO_DEBUG=False
 DJANGO_ALLOWED_HOSTS=.onrender.com,www.ashwith.cloud-ip.cc,ashwith.cloud-ip.cc
----
+```
 📬 Contact
 
 📧 Email: ashwithd40@gmail.com
