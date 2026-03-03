@@ -122,8 +122,8 @@ section {
   margin-top: 50px;
 }
 .tabs div{
-  height: 400px;
-  width: 100%;
+  height: 500px;
+  width: 500px;
   background-color: black;
   justify-content: center;
   align-items: center;
@@ -245,6 +245,16 @@ nav a{
 .submit-btn:hover {
   background-color: red;
 }
+#anctag{
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  background-color: #bd1212;
+  color: #eb6b16;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
 
 /* small screen */
 @media only screen and (max-width:600px)
