@@ -25,8 +25,9 @@
       <a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>Contact</a>
     </nav>
   </header>
-
-  {% block content %}{% endblock %}
+  {% block content %}
+  
+  {% endblock %}
 
 </body>
 </html>
