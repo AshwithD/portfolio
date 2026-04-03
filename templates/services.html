@@ -1,23 +1,37 @@
 {% extends "base.html" %}
 
-{% block title %}Services - Personal Portfolio{% endblock %}
+{% block title %}Ashwith D — Services{% endblock %}
 
 {% block content %}
-  <section id="services">
-    <h2>Services</h2>
-    <div class="tabs">
-      <div>
-        <i class='bx bx-code-alt'></i><h3>Web Development (Beginner) </h3>
-        <p>Capable of building responsive static websites using HTML, CSS, and basic JavaScript.</p><br>
+<section id="services">
+  <p class="section-label">What I Do</p>
+  <h2>Services</h2>
+  <p class="services-intro">// Here are a few services I offer:</p>
+
+  <div class="tabs">
+    <div class="service-card">
+      <div class="service-icon">
+        <i class='bx bx-code-alt'></i>
       </div>
-      <div>
-       <i class='bx bx-chip'></i><h3>  Embedded Systems Development </h3> 
-        <p>Experience in designing and implementing microcontroller-based projects using Arduino and ESP32.</p><br>
-      </div>
-      <div>
-        <i class='bx bx-movie-play'></i><h3>Video Editing (Mobile)  </h3>
-        <p>Proficient in editing short-form videos and reels using mobile-based video editing applications.</p><br>
-      </div>
+      <h3>Web Development</h3>
+      <p>Build responsive, performant websites using HTML, CSS, and JavaScript. Clean code, thoughtful UX.</p>
     </div>
-  </section>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <i class='bx bx-chip'></i>
+      </div>
+      <h3>Embedded Systems</h3>
+      <p>Design and implement microcontroller-based projects using Arduino and ESP32 platforms.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <i class='bx bx-movie-play'></i>
+      </div>
+      <h3>Video Editing</h3>
+      <p>Create engaging short-form content and reels tailored for social media audiences.</p>
+    </div>
+  </div>
+</section>
 {% endblock %}

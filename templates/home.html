@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Home - Personal Portfolio{% endblock %}
+{% block title %}Ashwith D — Home{% endblock %}
 
 {% block content %}
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>Hi, I'm Ashwith D</h1>
-      <h2>ECE Graduate</h2>
-      <p>Always curious, always learning — exploring the intersection of tech and creativity.</p>
-      <div class="buttons">
-        <a href="https://ashwithd.my.canva.site/" id="hireBtn">Hire Me</a>
-        <a href="mailto:ashwithd40@gmail.com" id="talkBtn">Let's Talk</a>
-      </div>
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/ashwith-d-495724204"><i class="bx bxl-linkedin"></i></a>
-        <a href="https://github.com/AshwithD"><i class="bx bxl-github"></i></a>
-        <a href="https://www.instagram.com/ashwith__gowda?igsh=MWFlYzh4ZHpnemJrcQ== "><i class="bx bxl-instagram"></i></a>
-      </div>
+<section class="hero" id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow">ECE Graduate &amp; Developer</p>
+    <h1>Hi, I'm<br><span>Ashwith D</span></h1>
+    <p class="hero-subtitle">Builder · Thinker · Maker</p>
+    <p>Always curious, always learning — exploring the intersection of tech and creativity. I build things for the web, hardware, and everything in between.</p>
+    <div class="buttons">
+      <a href="https://ashwithd.my.canva.site/" class="btn-primary">Hire Me</a>
+      <a href="mailto:ashwithd40@gmail.com" class="btn-outline">Let's Talk</a>
     </div>
-    <div class="hero-img">
-      <img src="{% static 'images/Ashwith.jpg' %}" alt="Ashwith" />
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/ashwith-d-495724204" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+      <a href="https://github.com/AshwithD" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+      <a href="https://www.instagram.com/ashwith__gowda" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
     </div>
-  </section>
+  </div>
+  <div class="hero-img">
+    <img src="{% static 'images/Ashwith.jpg' %}" alt="Ashwith D" />
+  </div>
+</section>
 {% endblock %}

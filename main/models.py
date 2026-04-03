@@ -14,7 +14,8 @@ class Contact(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to='projects/')
+    # image = models.ImageField(upload_to='projects/')
+    image = models.CharField(max_length=255)
     link = models.URLField()
     tech_stack = models.CharField(max_length=200)
     icon = models.CharField(max_length=100, blank=True, null=True)

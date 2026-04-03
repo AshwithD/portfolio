@@ -1,37 +1,59 @@
-
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}About - Personal Portfolio{% endblock %}
+{% block title %}Ashwith D — About{% endblock %}
 
 {% block content %}
-  <section id="about">
-    <h2>About Me</h2>
-    <p>An Electronics and Communication student passionate about leveraging technical skills in hardware and software domains. Eager to 
-    contribute to dynamic projects, with a keen interest in software development, AI, and embedded systems, while supporting 
-    organizational growth and advancing professionally.</p>
-    <br>
-    <h2>Skills</h2>
-    <div class="skills-icons"> 
-      <i class='bx bxl-python'></i>
-      <i class='bx bxl-html5' ></i>
-      <i class='bx bxl-css3' ></i>
-      <i class='bx bxl-javascript' ></i>
-      <i class="fa-solid fa-c"></i>
-      <i class="fas fa-database"></i>
-      <i class="fa-brands fa-github"></i>
+<section id="about">
+  <p class="section-label">Who I Am</p>
+  <h2>About Me</h2>
 
-      <svg  xmlns="http://www.w3.org/2000/svg" width="140" height="140"  
-      fill="currentColor" viewBox="0 0 24 24" >
-      <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-      <path d="m12,2.06c-5.52,0-10,4.46-10,9.97h0c0,5.5,4.48,9.97,10,9.97h0c5.52,0,10-4.46,10-9.97h0c0-5.51-4.48-9.97-10-9.97h0Zm-.69,4.51h6.29l-6.32,4.44h4.32l-9.2,6.47,2-4.44.91-2.03,2-4.44Z"/>
-      </svg>
-
-      <svg  xmlns="http://www.w3.org/2000/svg" width="140" height="140"  
-      fill="currentColor" viewBox="0 0 24 24" >
-      <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-      <path d="M7.533 12.249c-.011 1.985 1.445 3.168 3.768 2.63V9.618c-2.352-.716-3.758.733-3.768 2.631m3.839-10.238h3.199v15.143c-3.066.501-6.004.819-8.104-.355-2.705-1.513-2.923-6.319-.782-8.46 1.085-1.085 3.271-1.85 5.616-1.351V2.225c-.006-.101-.012-.202.071-.214m8.389 3.342h-3.199V2.011h3.199z"></path><path d="M19.761 7.044c-.003 2.356-.003 4.048-.003 6.911-.136 2.813-.104 5.052-1.135 6.398-.203.266-.634.652-.995.924-.303.228-.881.691-1.208.711-.331.021-1.18-.459-1.564-.64-.505-.237-.971-.553-1.493-.71 1.218-.754 2.372-1.32 2.844-2.844.41-1.326.355-3.247.355-5.119 0-1.849.009-3.998.009-5.63z"></path>
-      </svg>
-
+  <div class="about-grid">
+    <div class="about-bio">
+      <p>An Electronics and Communication graduate passionate about leveraging technical skills across hardware and software domains.</p>
+      <p>I'm eager to contribute to dynamic projects, with a keen interest in software development, AI, and embedded systems — while supporting organisational growth and advancing professionally.</p>
     </div>
-  </section>
+
+    <div>
+      <p class="about-skills-heading">// Technical Skills</p>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <i class='bx bxl-python'></i>
+          <span>Python</span>
+        </div>
+        <div class="skill-item">
+          <i class='bx bxl-html5'></i>
+          <span>HTML</span>
+        </div>
+        <div class="skill-item">
+          <i class='bx bxl-css3'></i>
+          <span>CSS</span>
+        </div>
+        <div class="skill-item">
+          <i class='bx bxl-javascript'></i>
+          <span>JS</span>
+        </div>
+        <div class="skill-item">
+          <i class="fa-solid fa-c"></i>
+          <span>C</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-database"></i>
+          <span>SQL</span>
+        </div>
+        <div class="skill-item">
+          <i class="fa-brands fa-github"></i>
+          <span>Git</span>
+        </div>
+        <div class="skill-item">
+          <!-- Django icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="m12,2.06c-5.52,0-10,4.46-10,9.97h0c0,5.5,4.48,9.97,10,9.97h0c5.52,0,10-4.46,10-9.97h0c0-5.51-4.48-9.97-10-9.97h0Zm-.69,4.51h6.29l-6.32,4.44h4.32l-9.2,6.47,2-4.44.91-2.03,2-4.44Z"/>
+          </svg>
+          <span>FastAPI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

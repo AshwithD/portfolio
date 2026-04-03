@@ -1,77 +1,70 @@
-
-
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Portfolio - Personal Portfolio{% endblock %}
+{% block title %}Ashwith D — Portfolio{% endblock %}
 
 {% block content %}
-  <section id="portfolio">
-    <p>Here are a few projects I've worked on recently:</p><br>
-    <div class="tabs">
+<section id="portfolio">
+  <p class="section-label">My Work</p>
+  <h2>Portfolio</h2>
+  <p class="portfolio-intro">// A few projects I've worked on recently:</p>
 
-          {% for project in projects %}
-            <div class="project-card">
-
-              <img src="{{ project.image.url }}" alt="{{ project.title }}">
-
-              <div class="overlay">
-                {% if project.icon %}
-                  <i class="{{ project.icon }}"></i>
-                {% endif %}
-                
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description }}</p>
-                <a href="{{ project.link }}" class="btn">Checkout</a>
-              </div>
-
-            </div>
-          {% endfor %}
-
-      
+  <div class="tabs">
+    <div class="project-card">
+      <img src="{% static 'images/projects/Trade Finance Blockchain Explorer.png' %}" alt="Trade Finance Blockchain Explorer">
+      <div class="overlay">
+        <i class="fa-solid fa-link"></i>
+        <h3>Trade Finance Blockchain Explorer</h3>
+        <h6>A blockchain-based platform for tracking and managing trade finance transactions with transparency and security.</h6>
+        <a href="https://trade-finance-blockchain-explorer.vercel.app/" class="btn" target="_blank" rel="noopener">Checkout →</a>
+      </div>
     </div>
-  </section>
+
+    <div class="project-card">
+      <img src="{% static 'images/projects/Binance Futures Testnet Trading Bot.png' %}" alt="Binance Futures Testnet Trading Bot">
+      <div class="overlay">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Binance Futures Trading Bot</h3>
+        <h6>A trading application to place and manage Binance USDT-M Futures Testnet trades with automated strategies.</h6>
+        <a href="https://binance-futures-testnet-ui.streamlit.app/" class="btn" target="_blank" rel="noopener">Checkout →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="{% static 'images/projects/AI Powered CRM for HCP Interactions.png' %}" alt="Binance Futures Testnet Trading Bot">
+      <div class="overlay">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>AI Powered CRM for HCP Interactions</h3>
+        <h6>AI-powered CRM system to log and analyze healthcare professional interactions using LangGraph and LLMs.</h6>
+        <a href="https://ai-crm-hcp-nu.vercel.app/" class="btn" target="_blank" rel="noopener">Checkout →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="{% static 'images/projects/Weather Dashboard.png' %}" alt="Binance Futures Testnet Trading Bot">
+      <div class="overlay">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Weather Dashboard</h3>
+        <h6>A web application that displays real-time weather data using external APIs with a clean user interface.</h6>
+        <a href="https://ashwithd.github.io/Weather-Dashboard/" class="btn" target="_blank" rel="noopener">Checkout →</a>
+      </div>
+    </div>
+
+
+    <div class="project-card">
+      <img src="{% static 'images/projects/portableECG.png' %}" alt="Binance Futures Testnet Trading Bot">
+      <div class="overlay">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Portable ECG Monitoring System</h3>
+        <h6>A health monitoring system that captures ECG signals using AD8232 sensor and displays real-time waveform and heart rate on OLED/TFT displays.</h6>
+        <a href="https://github.com/AshwithD/Portable-ECG-Monitoring-System" class="btn" target="_blank" rel="noopener">Checkout →</a>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</section>
 {% endblock %}
-
-
-
-<!-- <div>
-        <i class='bx bx-heart-circle'></i><h3>Portable ECG Monitoring System</h3>  
-        <p>A health monitoring system.</p><br>
-        <a id="anctag" href="https://github.com/AshwithD/Portable-ECG-Monitoring-System">Checkout</a>
-      
-      </div>
-
-      <div>
-        <i class="fa-solid fa-business-time"></i><h3> Trade Finance Blockchain Explorer</h3> 
-        <p>Blockchain-based platform for tracking and managing trade finance transactions.</p><br>
-        <a id="anctag" href="https://trade-finance-blockchain-explorer.vercel.app/">Checkout</a>
-      </div>
-
-      <div>
-        <i class="fa-solid fa-robot"></i><h3> AI Powered CRM for HCP Interactions</h3> 
-        <p>AI-powered CRM for logging HCP interactions using LangGraph and LLMs.</p><br>
-        <a  id="anctag" href="https://ai-crm-hcp-nu.vercel.app/">Checkout</a>
-      </div>
-
-      <div>
-        <i class="fa-brands fa-bots"></i><h3> Binance Futures Testnet Trading Bot</h3> 
-        <p>Application to place and manage Binance USDT-M Futures Testnet trades.</p><br>
-        <a id="anctag"  href="https://binance-futures-testnet-ui.streamlit.app/">Checkout</a>
-      </div>
-
-      <div>
-        <i class="fa-solid fa-cloud"></i><h3> Weather Dashboard</h3> 
-        <p>A simple web app to show real-time weather.</p><br>
-        <a id="anctag" href="https://ashwithd.github.io/Weather-Dashboard/">Checkout</a>
-      </div>
- -->
-
- <!-- {% for project in projects %}
-        <div>
-          <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width: 100%; border-radius:10px;">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-          <p><strong>{{ project.tech_stack }}</strong></p>
-          <a id="anctag"href="{{ project.link }}">Checkout</a>
-        </div>
-      {% endfor %} -->
