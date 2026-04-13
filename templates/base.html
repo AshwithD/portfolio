@@ -25,7 +25,87 @@
     </nav>
   </header>
 
-  {% block content %}{% endblock %}
+  {% block content %}
+  
+  
+  {% endblock %}
+
+
+    <!-- AI Chat Toggle Button -->
+  <button class="chat-toggle" onclick="toggleChat()" id="chat-toggle-btn">
+    <span class="chat-toggle-icon">🤖</span>
+  </button>
+
+  <!-- Chat Box -->
+  <div class="chat-container" id="chat-container">
+    <div class="chat-header">
+      <span class="chat-header-dot"></span>
+      <span class="chat-title">Ask Me</span>
+      <span class="chat-tag">AI</span>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div id="chat-box"></div>
+    <div class="chat-input-row">
+      <input type="text" id="user-input" placeholder="Ask something..." onkeydown="if(event.key==='Enter') sendMessage()">
+      <button onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+
+
+<script>
+function toggleChat() {
+  const box = document.getElementById("chat-container");
+  const btn = document.getElementById("chat-toggle-btn");
+  const isOpen = box.classList.contains("chat-open");
+  if (isOpen) {
+    box.classList.remove("chat-open");
+    btn.classList.remove("chat-toggle-hidden");
+  } else {
+    box.classList.add("chat-open");
+    btn.classList.add("chat-toggle-hidden");
+  }
+}
+
+async function sendMessage() {
+  let input = document.getElementById("user-input");
+  let message = input.value;
+  if (!message) return;
+  let chatBox = document.getElementById("chat-box");
+  chatBox.innerHTML += `<p class="user">${message}</p>`;
+  let response = await fetch("/chat/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": "{{ csrf_token }}"
+    },
+    body: JSON.stringify({ message: message })
+  });
+  let data = await response.json();
+  let botMsg = document.createElement("p");
+  botMsg.className = "bot";
+  chatBox.appendChild(botMsg);
+  typeEffect(data.response, botMsg);
+  input.value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function typeEffect(text, element) {
+  let i = 0;
+  let interval = setInterval(() => {
+    element.innerHTML += text.charAt(i);
+    i++;
+    if (i >= text.length) clearInterval(interval);
+  }, 20);
+}
+</script>
+
+
+
+
+
+
 
 </body>
 </html>

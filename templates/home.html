@@ -23,5 +23,123 @@
   <div class="hero-img">
     <img src="{% static 'images/Ashwith.jpg' %}" alt="Ashwith D" />
   </div>
+
+
+  <!-- <div class="chat-container">
+    <h3>Ask Me 🤖</h3>
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Ask something...">
+    <button onclick="sendMessage()">send</button>
+  </div> -->
+
+
+  <!-- <div class="chat-container">
+    <div class="chat-header">
+      <span class="chat-header-dot"></span>
+      <span class="chat-title">Ask Me</span>
+      <span class="chat-tag">AI</span>
+    </div>
+    <div id="chat-box"></div>
+    <div class="chat-input-row">
+      <input type="text" id="user-input" placeholder="Ask something..." onkeydown="if(event.key==='Enter') sendMessage()">
+      <button onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div> -->
+
+
+
+  
+
 </section>
+
+
+
+<!-- <script>
+  async function sendMessage(){
+    let input = document.getElementById("user-input");
+    let message = input.value;
+
+    if (!message) return;
+
+    let chatBox = document.getElementById("chat-box")
+
+    chatBox.innerHTML += `<p class="user">${message}</p>`;
+
+    let response = await fetch("/chat/", { method:"POST",
+                                           headers: 
+                                           {
+                                             "Content-Type": "application/json",
+                                             "X-CSRFToken": "{{ csrf_token }}"
+                                            },
+                                           body: JSON.stringify({ message: message })
+                                          }
+                              );
+        
+    let data = await response.json();
+
+    chatBox.innerHTML += `<p class="bot">${data.response}</p>`;
+
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+    
+  }
+</script> -->
+
+
+<!-- <script>
+async function sendMessage() {
+  let input = document.getElementById("user-input");
+  let message = input.value;
+
+  if (!message) return;
+
+  let chatBox = document.getElementById("chat-box");
+
+  chatBox.innerHTML += `<p class="user">${message}</p>`;
+
+  let response = await fetch("/chat/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": "{{ csrf_token }}"
+    },
+    body: JSON.stringify({ message: message })
+  });
+
+  let data = await response.json();
+
+  // chatBox.innerHTML += `<p class="bot">${data.response}</p>`;
+
+  // chatBox.innerHTML += `<p class="bot">Typing...</p>`;
+  
+  let botMsg = document.createElement("p");
+  botMsg.className = "bot";
+  chatBox.appendChild(botMsg);
+
+  typeEffect(data.response, botMsg);
+
+  input.value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+
+function typeEffect(text, element) {
+  let i = 0;
+  let interval = setInterval(() => {
+    element.innerHTML += text.charAt(i);
+    i++;
+    if (i >= text.length) clearInterval(interval);
+  }, 20);
+}
+</script> -->
+
+
+
+
+
+
+
 {% endblock %}
+
