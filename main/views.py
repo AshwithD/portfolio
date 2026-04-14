@@ -131,7 +131,15 @@ def chat(request):
         if not user_message or len(user_message) > 500:
             return JsonResponse({"response": "Please send a valid message."}, status=400)
 
+        # get existing history or start fresh
+        history = request.session.get("chat_history", [])
 
+        # add user message to history
+        history.append({"role": "user", "content": user_message})
+
+        # keep last 10 messages only so prompt doesnt get too long
+        if len(history) > 10:
+            history = history[-10:]
 
         try:
             response = client.chat.completions.create(
@@ -199,13 +207,15 @@ def chat(request):
                                 10. Output should look visually spaced and easy to scan
 
                                 EMOJIS:
-                                - Use very minimal emojis (only 1–2 if needed)
+                                - Use very minimal emojis (only 1-2 if needed)
 
                                 TONE:
                                 - Simple
                                 - Clean
                                 - Human
-                                - Not robotic
+                                - Professional
+                                - Be supportive to Ashwith's skills and projects
+                                - Avoid overhyping, but be confident
 
                                 {PORTFOLIO_DATA}
    
@@ -213,11 +223,17 @@ def chat(request):
                                 - Always prioritize spacing over compactness
                                 """
                             },
-                            {"role": "user", "content": user_message}
+                            # {"role": "user", "content": user_message}
+                            *history  # <-- this unpacks full conversation history
                         ]
             )
 
             reply = response.choices[0].message.content
+
+            # add AI reply to history and save back to session
+            history.append({"role": "assistant", "content": reply})
+            request.session["chat_history"] = history
+            request.session.modified = True  # tells Django the session changed
 
         except Exception as e:
             print(e)
@@ -225,3 +241,10 @@ def chat(request):
             reply = "AI is temporarily unavailable. Please explore my portfolio!"
 
         return JsonResponse({"response": reply})
+
+
+def clear_chat(request):
+    if request.method == "POST":
+        request.session["chat_history"] = []
+        request.session.modified = True
+        return JsonResponse({"status": "cleared"})

@@ -144,7 +144,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
 # Update database configuration from $DATABASE_URL (e.g. provided by Render/Heroku)
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=False)
 if db_from_env:
     DATABASES['default'].update(db_from_env)
+
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 1800 

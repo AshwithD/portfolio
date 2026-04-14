@@ -23,7 +23,29 @@
       <a href="{% url 'portfolio' %}" {% if request.resolver_match.url_name == 'portfolio' %}class="active"{% endif %}>Portfolio</a>
       <a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>Contact</a>
     </nav>
+
+    <!-- hamburger button -->
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </header>
+
+    <!-- mobile drawer -->
+
+
+  <div class="mobile-drawer" id="mobile-drawer">
+    <button class="drawer-close" onclick="toggleMenu()">✕</button>
+    <nav class="mobile-nav">
+      <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>Home</a>
+      <a href="{% url 'about' %}" {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}>About</a>
+      <a href="{% url 'services' %}" {% if request.resolver_match.url_name == 'services' %}class="active"{% endif %}>Services</a>
+      <a href="{% url 'portfolio' %}" {% if request.resolver_match.url_name == 'portfolio' %}class="active"{% endif %}>Portfolio</a>
+      <a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>Contact</a>
+    </nav>
+  </div>
 
   {% block content %}
   
@@ -55,50 +77,87 @@
 
 
 <script>
-function toggleChat() {
-  const box = document.getElementById("chat-container");
-  const btn = document.getElementById("chat-toggle-btn");
-  const isOpen = box.classList.contains("chat-open");
-  if (isOpen) {
-    box.classList.remove("chat-open");
-    btn.classList.remove("chat-toggle-hidden");
-  } else {
-    box.classList.add("chat-open");
-    btn.classList.add("chat-toggle-hidden");
+  function toggleChat() {
+    const box = document.getElementById("chat-container");
+    const btn = document.getElementById("chat-toggle-btn");
+    const isOpen = box.classList.contains("chat-open");
+    if (isOpen) {
+      box.classList.remove("chat-open");
+      btn.classList.remove("chat-toggle-hidden");
+
+      // clear history on close
+      fetch("/clear-chat/", { method: "POST", headers: { "X-CSRFToken": "{{ csrf_token }}" }});
+    } else {
+      box.classList.add("chat-open");
+      btn.classList.add("chat-toggle-hidden");
+    }
   }
-}
 
-async function sendMessage() {
-  let input = document.getElementById("user-input");
-  let message = input.value;
-  if (!message) return;
-  let chatBox = document.getElementById("chat-box");
-  chatBox.innerHTML += `<p class="user">${message}</p>`;
-  let response = await fetch("/chat/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-CSRFToken": "{{ csrf_token }}"
-    },
-    body: JSON.stringify({ message: message })
+  async function sendMessage() {
+    let input = document.getElementById("user-input");
+    let message = input.value;
+    if (!message) return;
+    let chatBox = document.getElementById("chat-box");
+    chatBox.innerHTML += `<p class="user">${message}</p>`;
+    let response = await fetch("/chat/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": "{{ csrf_token }}"
+      },
+      body: JSON.stringify({ message: message })
+    });
+    let data = await response.json();
+    let botMsg = document.createElement("p");
+    botMsg.className = "bot";
+    chatBox.appendChild(botMsg);
+    typeEffect(data.response, botMsg);
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  function typeEffect(text, element) {
+    let i = 0;
+    let interval = setInterval(() => {
+      element.innerHTML += text.charAt(i);
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 20);
+  }
+
+
+
+  function toggleMenu() {
+    const drawer = document.getElementById("mobile-drawer");
+    const overlay = document.getElementById("mobile-overlay");
+    const hamburger = document.getElementById("hamburger");
+
+    drawer.classList.toggle("drawer-open");
+    overlay.classList.toggle("overlay-show");
+    hamburger.classList.toggle("hamburger-open");
+  }
+
+  // overlay click closes drawer
+  document.getElementById("mobile-overlay").addEventListener("click", function(e) {
+    if (e.target === this) toggleMenu();
   });
-  let data = await response.json();
-  let botMsg = document.createElement("p");
-  botMsg.className = "bot";
-  chatBox.appendChild(botMsg);
-  typeEffect(data.response, botMsg);
-  input.value = "";
-  chatBox.scrollTop = chatBox.scrollHeight;
-}
 
-function typeEffect(text, element) {
-  let i = 0;
-  let interval = setInterval(() => {
-    element.innerHTML += text.charAt(i);
-    i++;
-    if (i >= text.length) clearInterval(interval);
-  }, 20);
-}
+  // close drawer when a nav link is clicked
+  document.querySelectorAll(".mobile-nav a").forEach(link => {
+    link.addEventListener("click", () => toggleMenu());
+  });
+
+  // prevent touches inside the drawer from closing it
+  document.getElementById("mobile-drawer").addEventListener("touchstart", function(e) {
+    e.stopPropagation();
+  });
+
+  // prevent touches inside the drawer from closing it
+  document.getElementById("mobile-drawer").addEventListener("click", function(e) {
+    e.stopPropagation();
+  });
+
+
 </script>
 
 
