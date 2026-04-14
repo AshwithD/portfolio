@@ -854,8 +854,10 @@ section {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-top: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     min-height: auto;
+    gap: 0;
   }
   .hero::before { display: none; }
   .hero-text { display: contents; }
@@ -863,17 +865,17 @@ section {
   .hero-eyebrow {
     justify-content: center;
     order: 1;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
   .hero-img {
     display: flex;
     justify-content: center;
     order: 2;
-    margin: 1rem 0;
+    margin: 0.75rem 0;
   }
   .hero-img img {
-    width: 200px;
-    height: 240px;
+    width: 180px;
+    height: 220px;
   }
   .hero-img::before { display: none; }
   .hero-img::after  { display: none; }
@@ -884,7 +886,7 @@ section {
   }
   .hero-subtitle {
     order: 4;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
   }
   .hero-text > p {
     order: 5;
@@ -894,13 +896,14 @@ section {
   .buttons {
     order: 6;
     justify-content: center;
+    margin-bottom: 1rem;
   }
   .social-icons {
     order: 7;
     justify-content: center;
   }
 
-  /* ABOUT — stack vertically */
+  /* ABOUT */
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
